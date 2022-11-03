@@ -6,12 +6,12 @@ TODO: Add a codecov badge for the main branch here.  What's shown is an example,
 
 TODO: Add a link to the deployed Heroku app for your team here, e.g.
 
-* <https://f22-7pm-3-team02.herokuapp.com>
+* <https://f22-5pm-1-team03.herokuapp.com>
 
 TODO: Add correct links to the -docs and -docs qa GitHub pages sites
 
-* Storybook (production): <https://ucsb-cs156-f22.github.io/STARTER-team03-docs>
-* Storybook (development/qa): <https://ucsb-cs156-f22.github.io/STARTER-team03-docs-qa>
+* Storybook (production): <https://github.com/ucsb-cs156-f22/team03-f22-5pm-1-docs>
+* Storybook (development/qa): <https://github.com/ucsb-cs156-f22/team03-f22-5pm-1-docs-qa>
 
 TODO: Leave the results of the TODOS, but remove all of the TODO instructions from the readme.
 
