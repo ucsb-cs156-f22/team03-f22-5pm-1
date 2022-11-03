@@ -8,8 +8,8 @@ TODO: Add a codecov badge for the main branch here.  What's shown is an example,
 
 TODO: Add correct links to the -docs and -docs qa GitHub pages sites
 
-* Storybook (production): <https://github.com/ucsb-cs156-f22/team03-f22-5pm-1-docs>
-* Storybook (development/qa): <https://github.com/ucsb-cs156-f22/team03-f22-5pm-1-docs-qa>
+* Storybook (production): <https://ucsb-cs156-f22.github.io/team03-f22-5pm-1-docs>
+* Storybook (development/qa): <https://ucsb-cs156-f22.github.io/team03-f22-5pm-1-docs-qa>
 
 TODO: Leave the results of the TODOS, but remove all of the TODO instructions from the readme.
 
