@@ -4,7 +4,7 @@ export default function ReviewEditPage() {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Todos</h1>
+        <h1>ReviewEditPage</h1>
         <p>
           This is where the Review edit page will go
         </p>
