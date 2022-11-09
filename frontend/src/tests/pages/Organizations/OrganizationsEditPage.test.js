@@ -3,8 +3,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import OrganizationsEditPage from "main/pages/Organizations/OrganizationsEditPage";
 
-import axios from "axios";
-import AxiosMockAdapter from "axios-mock-adapter";
+//import axios from "axios";
+//import AxiosMockAdapter from "axios-mock-adapter";
 
 import _mockConsole from "jest-mock-console";
 
