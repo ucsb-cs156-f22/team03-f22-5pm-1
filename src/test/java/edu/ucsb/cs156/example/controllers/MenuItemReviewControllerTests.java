@@ -195,83 +195,87 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(expectedJson, responseString);
         }
-/*
+
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void admin_can_delete_a_date() throws Exception {
+        public void admin_can_delete_a_review() throws Exception {
                 // arrange
 
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
-                UCSBDate ucsbDate1 = UCSBDate.builder()
-                                .name("firstDayOfClasses")
-                                .quarterYYYYQ("20222")
-                                .localDateTime(ldt1)
+                MenuItemReview menuItemReview1 = MenuItemReview.builder()
+                                .itemId(30L)
+                                .reviewerEmail("ethanlee@ucsb.edu")
+                                .stars(3)
+                                .dateReviewed(ldt1)
+                                .comments("ok")
                                 .build();
 
-                when(ucsbDateRepository.findById(eq(15L))).thenReturn(Optional.of(ucsbDate1));
+                when(menuItemReviewRepository.findById(eq(15L))).thenReturn(Optional.of(menuItemReview1));
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdates?id=15")
+                                delete("/api/MenuItemReview?id=15")
                                                 .with(csrf()))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-                verify(ucsbDateRepository, times(1)).findById(15L);
-                verify(ucsbDateRepository, times(1)).delete(any());
+                verify(menuItemReviewRepository, times(1)).findById(15L);
+                verify(menuItemReviewRepository, times(1)).delete(any());
 
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDate with id 15 deleted", json.get("message"));
+                assertEquals("MenuItemReview with id 15 deleted", json.get("message"));
         }
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void admin_tries_to_delete_non_existant_ucsbdate_and_gets_right_error_message()
+        public void admin_tries_to_delete_non_existant_review_and_gets_right_error_message()
                         throws Exception {
                 // arrange
-
-                when(ucsbDateRepository.findById(eq(15L))).thenReturn(Optional.empty());
-
+                when(menuItemReviewRepository.findById(eq(15L))).thenReturn(Optional.empty());
                 // act
                 MvcResult response = mockMvc.perform(
-                                delete("/api/ucsbdates?id=15")
+                                delete("/api/MenuItemReview?id=15")
                                                 .with(csrf()))
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
-                verify(ucsbDateRepository, times(1)).findById(15L);
+                verify(menuItemReviewRepository, times(1)).findById(15L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDate with id 15 not found", json.get("message"));
+                assertEquals("MenuItemReview with id 15 not found", json.get("message"));
         }
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void admin_can_edit_an_existing_ucsbdate() throws Exception {
+        public void admin_can_edit_an_existing_review() throws Exception {
                 // arrange
 
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
                 LocalDateTime ldt2 = LocalDateTime.parse("2023-01-03T00:00:00");
 
-                UCSBDate ucsbDateOrig = UCSBDate.builder()
-                                .name("firstDayOfClasses")
-                                .quarterYYYYQ("20222")
-                                .localDateTime(ldt1)
+                MenuItemReview menuItemReviewOrig = MenuItemReview.builder()
+                                .itemId(30L)
+                                .reviewerEmail("ethanlee@ucsb.edu")
+                                .stars(3)
+                                .dateReviewed(ldt1)
+                                .comments("ok")
                                 .build();
 
-                UCSBDate ucsbDateEdited = UCSBDate.builder()
-                                .name("firstDayOfFestivus")
-                                .quarterYYYYQ("20232")
-                                .localDateTime(ldt2)
+                MenuItemReview menuItemReviewUpdated = MenuItemReview.builder()
+                                .itemId(15l)
+                                .reviewerEmail("bob@ucsb.edu")
+                                .stars(5)
+                                .dateReviewed(ldt2)
+                                .comments("not ok")
                                 .build();
 
-                String requestBody = mapper.writeValueAsString(ucsbDateEdited);
+                String requestBody = mapper.writeValueAsString(menuItemReviewUpdated);
 
-                when(ucsbDateRepository.findById(eq(67L))).thenReturn(Optional.of(ucsbDateOrig));
+                when(menuItemReviewRepository.findById(eq(67L))).thenReturn(Optional.of(menuItemReviewOrig));
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdates?id=67")
+                                put("/api/MenuItemReview?id=67")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
@@ -279,32 +283,34 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
-                verify(ucsbDateRepository, times(1)).findById(67L);
-                verify(ucsbDateRepository, times(1)).save(ucsbDateEdited); // should be saved with correct user
+                verify(menuItemReviewRepository, times(1)).findById(67L);
+                verify(menuItemReviewRepository, times(1)).save(menuItemReviewUpdated); // should be saved with correct user
                 String responseString = response.getResponse().getContentAsString();
                 assertEquals(requestBody, responseString);
         }
 
         @WithMockUser(roles = { "ADMIN", "USER" })
         @Test
-        public void admin_cannot_edit_ucsbdate_that_does_not_exist() throws Exception {
+        public void admin_cannot_edit_review_that_does_not_exist() throws Exception {
                 // arrange
 
                 LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
 
-                UCSBDate ucsbEditedDate = UCSBDate.builder()
-                                .name("firstDayOfClasses")
-                                .quarterYYYYQ("20222")
-                                .localDateTime(ldt1)
+                MenuItemReview editedmenuItemReview = MenuItemReview.builder()
+                                .itemId(30L)
+                                .reviewerEmail("ethanlee@ucsb.edu")
+                                .stars(3)
+                                .dateReviewed(ldt1)
+                                .comments("ok")
                                 .build();
 
-                String requestBody = mapper.writeValueAsString(ucsbEditedDate);
+                String requestBody = mapper.writeValueAsString(editedmenuItemReview);
 
-                when(ucsbDateRepository.findById(eq(67L))).thenReturn(Optional.empty());
+                when(menuItemReviewRepository.findById(eq(67L))).thenReturn(Optional.empty());
 
                 // act
                 MvcResult response = mockMvc.perform(
-                                put("/api/ucsbdates?id=67")
+                                put("/api/MenuItemReview?id=67")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .characterEncoding("utf-8")
                                                 .content(requestBody)
@@ -312,9 +318,9 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
                                 .andExpect(status().isNotFound()).andReturn();
 
                 // assert
-                verify(ucsbDateRepository, times(1)).findById(67L);
+                verify(menuItemReviewRepository, times(1)).findById(67L);
                 Map<String, Object> json = responseToJson(response);
-                assertEquals("UCSBDate with id 67 not found", json.get("message"));
+                assertEquals("MenuItemReview with id 67 not found", json.get("message"));
 
-        }*/
+        }
 }
