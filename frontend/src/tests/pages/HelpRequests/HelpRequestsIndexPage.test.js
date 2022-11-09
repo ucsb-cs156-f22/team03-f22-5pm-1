@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
+import TodosIndexPage from "main/pages/Todos/TodosIndexPage";
 
 import { apiCurrentUserFixtures }  from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -19,7 +19,7 @@ describe("TodosIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <HelpRequestsIndexPage />
+                    <TodosIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
