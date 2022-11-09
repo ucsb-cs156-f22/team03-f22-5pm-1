@@ -34,10 +34,10 @@ jest.mock('react-router-dom', () => {
 describe("OrganizationsEditPage tests", () => {
 
     describe("tests where backend is working normally", () => {
-
+/*
         const axiosMock = new AxiosMockAdapter(axios);
 
-       /*  beforeEach(() => {
+        beforeEach(() => {
             axiosMock.reset();
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
