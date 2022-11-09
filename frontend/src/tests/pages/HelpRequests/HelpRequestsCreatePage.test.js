@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import TodosCreatePage from "main/pages/Todos/TodosCreatePage";
+import HelpRequestsCreatePage from "main/pages/HelpRequests/HelpRequestsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 
-describe("TodosCreatePage tests", () => {
+describe("HelpRequestsCreatePage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
     axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
@@ -20,7 +20,7 @@ describe("TodosCreatePage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <TodosCreatePage />
+                    <HelpRequestsCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );

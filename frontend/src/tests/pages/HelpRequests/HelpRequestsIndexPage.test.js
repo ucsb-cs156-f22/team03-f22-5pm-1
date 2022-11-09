@@ -1,14 +1,14 @@
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import TodosIndexPage from "main/pages/Todos/TodosIndexPage";
+import HelpRequestsIndexPage from "main/pages/HelpRequests/HelpRequestsIndexPage";
 
 import { apiCurrentUserFixtures }  from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-describe("TodosIndexPage tests", () => {
+describe("HelpRequestsIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
     axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
@@ -19,7 +19,7 @@ describe("TodosIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <TodosIndexPage />
+                    <HelpRequestsIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
