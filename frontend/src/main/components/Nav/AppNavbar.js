@@ -75,6 +75,48 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Menu Item" id="appnavbar-menuitem-dropdown" data-testid="appnavbar-menuitem-dropdown" >
+                    <NavDropdown.Item as={Link} to="/menuitem/list" data-testid="appnavbar-menuitem-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Organization" id="appnavbar-organization-dropdown" data-testid="appnavbar-organization-dropdown" >
+                    <NavDropdown.Item as={Link} to="/organization/list" data-testid="appnavbar-organization-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Recommendation" id="appnavbar-recommendation-dropdown" data-testid="appnavbar-recommendation-dropdown" >
+                    <NavDropdown.Item as={Link} to="/recommendation/list" data-testid="appnavbar-recommendation-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Review" id="appnavbar-review-dropdown" data-testid="appnavbar-review-dropdown" >
+                    <NavDropdown.Item as={Link} to="/review/list" data-testid="appnavbar-review-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Help Request" id="appnavbar-helprequest-dropdown" data-testid="appnavbar-helprequest-dropdown" >
+                    <NavDropdown.Item as={Link} to="/helprequest/list" data-testid="appnavbar-helprequest-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Article" id="appnavbar-article-dropdown" data-testid="appnavbar-article-dropdown" >
+                    <NavDropdown.Item as={Link} to="/article/list" data-testid="appnavbar-article-list">List</NavDropdown.Item>
+                  </NavDropdown>
+                )
+              }
             </Nav>
 
             <Nav className="ml-auto">
