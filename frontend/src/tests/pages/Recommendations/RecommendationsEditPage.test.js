@@ -3,10 +3,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import RecommendationsEditPage from "main/pages/Recommendations/RecommendationsEditPage";
 
-// import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-// import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-// import axios from "axios";
-// import AxiosMockAdapter from "axios-mock-adapter";
+import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
+import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import axios from "axios";
+import AxiosMockAdapter from "axios-mock-adapter";
 
 import _mockConsole from "jest-mock-console";
 
@@ -27,7 +27,7 @@ jest.mock('react-router-dom', () => {
         __esModule: true,
         ...originalModule,
         useParams: () => ({
-            code: "ortega"
+            code: 1
         }),
         Navigate: (x) => { mockNavigate(x); return null; }
     };
@@ -36,6 +36,15 @@ jest.mock('react-router-dom', () => {
 describe("RecommendationsEditPage tests", () => {
 
     describe("tests where backend is working normally", () => {
+
+        const axiosMock = new AxiosMockAdapter(axios);
+
+        beforeEach(() => {
+            axiosMock.reset();
+            axiosMock.resetHistory();
+            axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
+            axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
+        });
 
         const queryClient = new QueryClient();
         test("renders without crashing", () => {
