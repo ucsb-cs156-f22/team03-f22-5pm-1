@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import TodosCreatePage from "main/pages/Todos/ArticleCreatePage";
+import ArticleCreatePage from "main/pages/Article/ArticleCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
