@@ -1,12 +1,12 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { /*fireEvent, */render/*, waitFor*/ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import RecommendationsEditPage from "main/pages/Recommendations/RecommendationsEditPage";
 
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import axios from "axios";
-import AxiosMockAdapter from "axios-mock-adapter";
+// import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
+// import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+// import axios from "axios";
+// import AxiosMockAdapter from "axios-mock-adapter";
 
 import _mockConsole from "jest-mock-console";
 

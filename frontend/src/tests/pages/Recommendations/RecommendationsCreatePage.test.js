@@ -1,4 +1,4 @@
-import { render, waitFor, fireEvent } from "@testing-library/react";
+import { render /*, waitFor, fireEvent */ } from "@testing-library/react";
 import RecommendationsCreatePage from "main/pages/Recommendations/RecommendationsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
