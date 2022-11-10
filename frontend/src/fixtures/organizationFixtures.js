@@ -1,5 +1,5 @@
 const organizationFixtures = {
-    oneOrganizations: {
+    oneOrganization: {
         "orgCode": "test1",
         "orgTranslationShort": "test1",
         "orgTranslation": "test1",
