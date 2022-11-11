@@ -1,11 +1,11 @@
 import React from 'react';
 
 import ReviewTable from "main/components/Review/ReviewTable";
-import { ucsbDatesFixtures } from 'fixtures/reviewFixtures';
+import { reviewsFixtures } from 'fixtures/reviewsFixtures';
 
 export default {
     title: 'components/Review/ReviewTables',
-    component: UCSBDatesTable
+    component: ReviewTable
 };
 
 const Template = (args) => {
@@ -20,10 +20,10 @@ Empty.args = {
     dates: []
 };
 
-export const ThreeDates = Template.bind({});
+export const ThreeReview = Template.bind({});
 
-ThreeDates.args = {
-    dates: reviewFixtures.threeDates
+ThreeReview.args = {
+    dates: reviewsFixtures.threeReview
 };
 
 

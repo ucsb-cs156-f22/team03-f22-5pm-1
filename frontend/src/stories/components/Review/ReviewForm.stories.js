@@ -1,7 +1,7 @@
 import React from 'react';
 
-import UCSBDateForm from "main/components/Review/ReviewForm"
-import { ucsbDatesFixtures } from 'fixtures/reviewFixtures';
+import ReviewForm from "main/components/Review/ReviewForm"
+import { reviewsFixtures } from 'fixtures/reviewsFixtures';
 
 export default {
     title: 'components/Review/ReviewForm',
@@ -25,7 +25,7 @@ Default.args = {
 export const Show = Template.bind({});
 
 Show.args = {
-    review: reviewFixtures.oneDate,
+    review: reviewsFixtures.oneDate,
     submitText: "",
     submitAction: () => { }
 };

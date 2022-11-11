@@ -1,6 +1,6 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
-import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ReviewUtils"
+//import { useBackendMutation } from "main/utils/useBackend";
+//import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/ReviewUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
@@ -17,12 +17,12 @@ export default function ReviewTable({ reviews, currentUser }) {
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
         ["/api/reviews/all"]
-    );*/
+    );
     // Stryker enable all 
 
-    // Stryker disable next-line all : TODO try to make a good test for this
-    //const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
-
+    //Stryker disable next-line all : TODO try to make a good test for this
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    */
     const columns = [
         {
             Header: 'id',
