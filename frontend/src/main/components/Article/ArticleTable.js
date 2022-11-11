@@ -4,16 +4,6 @@ import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export function cellToAxiosParamsDelete(cell) {
-    return {
-        url: "/api/article",
-        method: "DELETE",
-        params: {
-            code: cell.row.values.code
-        }
-    }
-}
-
 export default function ArticleTable({ article, currentUser }) {
 
     const navigate = useNavigate();

@@ -27,7 +27,7 @@ jest.mock('react-router-dom', () => {
         __esModule: true,
         ...originalModule,
         useParams: () => ({
-            title: "article1"
+            title: "Article1"
         }),
         Navigate: (x) => { mockNavigate(x); return null; }
     };
@@ -44,19 +44,19 @@ describe("ArticleEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/article", { params: { title: "article1" } }).reply(200, {  
-                url: "Article1",
-                title: "article1",
+            axiosMock.onGet("/api/article", { params: { title: "Article1" } }).reply(200, {  
+                url: "article1",
+                title: "Article1",
                 explanation: "Article1 explanation",
                 email: "article1@gmail.com",
-                dateAdded: ""
+                dateAdded: "2022-01-03T00:00:00"
             });
             axiosMock.onPut('/api/article').reply(200, {
-                url: "Article1",
-                title: "article1 article",
+                url: "article1 article",
+                title: "Article1",
                 explanation: "Article1 explanation",
                 email: "article1@gmail.com",
-                dateAdded: ""
+                dateAdded: "2022-01-03T00:00:00"
             });
         });
 
@@ -87,11 +87,13 @@ describe("ArticleEditPage tests", () => {
             const urlField = getByTestId("ArticleForm-url");
             const explanationField = getByTestId("ArticleForm-explanation");
             const emailField = getByTestId("ArticleForm-email");
+            const dateAddedField = getByTestId("ArticleForm-dateAdded");
 
             expect(titleField).toHaveValue("Article1");
             expect(urlField).toHaveValue("article1");
             expect(explanationField).toHaveValue("Article1 explanation");
             expect(emailField).toHaveValue("article1@gmail.com");
+            expect(dateAddedField).toHaveValue("2022-01-03T00:00:00");
         });
 
         test("Changes when you click Update", async () => {
@@ -110,18 +112,20 @@ describe("ArticleEditPage tests", () => {
             const urlField = getByTestId("ArticleForm-url");
             const explanationField = getByTestId("ArticleForm-explanation");
             const emailField = getByTestId("ArticleForm-email");
+            const dateAddedField = getByTestId("ArticleForm-dateAdded");
 
             expect(titleField).toHaveValue("Article1");
             expect(urlField).toHaveValue("article1");
-            expect(explanationField).toHaveValue("Article1 explanatino");
+            expect(explanationField).toHaveValue("Article1 explanation");
             expect(emailField).toHaveValue("article1@gmail.com");
+            expect(dateAddedField).toHaveValue("2022-01-03T00:00:00")
            
             const submitButton = getByText("Update");
 
             expect(submitButton).toBeInTheDocument();
 
-            fireEvent.change(urlField, { target: { value: 'article1' } })
-            fireEvent.change(explanationField, { target: { value: 'Article1 Explanation' } })
+            fireEvent.change(urlField, { target: { value: 'article1 article' } })
+            fireEvent.change(explanationField, { target: { value: 'Article1 explanation' } })
             fireEvent.change(emailField, { target: { value: 'article1@gmail.com'  } })
 
             fireEvent.click(submitButton);
@@ -131,11 +135,12 @@ describe("ArticleEditPage tests", () => {
             expect(mockNavigate).toBeCalledWith({ "to": "/article/list" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
-            expect(axiosMock.history.put[0].params).toEqual({ title:"article1 article" });
+            expect(axiosMock.history.put[0].params).toEqual({ title:"Article1" });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
                 url: "article1 article",
                 explanation: "Article1 explanation",
-                email: "article1@gmail.com"
+                email: "article1@gmail.com",
+                dateAdded: "2022-01-03T00:00:00"
             })); // posted object
 
         });
