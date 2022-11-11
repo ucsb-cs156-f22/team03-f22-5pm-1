@@ -2,7 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create" }) {
+function ArticleForm({ initialArticle, submitAction, buttonLabel = "Create" }) {
 
     // Stryker disable all
     const {
@@ -10,22 +10,17 @@ function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create
         formState: { errors },
         handleSubmit,
     } = useForm(
-        { defaultValues: initialCommons || {} }
+        { defaultValues: initialArticle || {} }
     );
     // Stryker enable all
 
     const navigate = useNavigate();
 
-    const minLat = -90.0;
-    const maxLat = 90.0;
-    const minLong = -180.0;
-    const maxLong = 180.0;
-
     return (
 
         <Form onSubmit={handleSubmit(submitAction)}>
 
-            {initialCommons && (
+            {initialArticle && (
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="title">Title</Form.Label>
                     <Form.Control
@@ -33,14 +28,14 @@ function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create
                         id="title"
                         type="text"
                         {...register("title")}
-                        value={initialCommons.title}
+                        value={initialArticle.title}
                         disabled
                     />
                 </Form.Group>
             )}
 
 
-            {!initialCommons && (
+            {!initialArticle && (
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="title">Title</Form.Label>
                     <Form.Control
@@ -79,7 +74,7 @@ function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create
                 <Form.Control
                     data-testid="ArticleForm-explanation"
                     id="explanation"
-                    type="number"
+                    type="text"
                     precision={6}   
                     isInvalid={Boolean(errors.explanation)}
                     {...register("explanation", { 
@@ -96,7 +91,7 @@ function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create
                 <Form.Control
                     data-testid="ArticleForm-email"
                     id="email"
-                    type="number"
+                    type="text"
                     isInvalid={Boolean(errors.email)}
                     {...register("email", { 
                         required: "Email is required." })}
@@ -112,10 +107,10 @@ function DiningCommonsForm({ initialCommons, submitAction, buttonLabel = "Create
                 <Form.Control
                     data-testid="ArticleForm-dateAdded"
                     id="dateAdded"
-                    type="number"
-                    isInvalid={Boolean(errors.email)}
+                    type="text"
+                    isInvalid={Boolean(errors.dateAdded)}
                     {...register("dateAdded", { 
-                        required: "Date Added is required." })}
+                        required: "Date Added is required. QuarterYYYYQ must be in the format YYYYQ, e.g. 20224 for Fall 2022" })}
                 />
                 <Form.Control.Feedback type="invalid">
                     {errors.email?.message}

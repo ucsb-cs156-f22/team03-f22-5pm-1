@@ -1,36 +1,36 @@
 import React from 'react';
 
-import DiningCommonsTable from "main/components/DiningCommons/DiningCommonsTable";
-import { diningCommonsFixtures } from 'fixtures/diningCommonsFixtures';
+import ArticleTable from "main/components/Article/ArticleTable";
+import { articleFixtures } from 'fixtures/articleFixtures';
 import { currentUserFixtures } from 'fixtures/currentUserFixtures';
 
 export default {
-    title: 'components/DiningCommons/DiningCommonsTable',
-    component: DiningCommonsTable
+    title: 'components/Article/ArticleTable',
+    component: ArticleTable
 };
 
 const Template = (args) => {
     return (
-        <DiningCommonsTable {...args} />
+        <ArticleTable {...args} />
     )
 };
 
 export const Empty = Template.bind({});
 
 Empty.args = {
-    diningCommons: []
+    article: []
 };
 
 export const ThreeDates = Template.bind({});
 
 ThreeDates.args = {
-    diningCommons: diningCommonsFixtures.threeCommons
+    article: articleFixtures.threeArticle
 };
 
 export const ThreeDatesAsAdmin = Template.bind({});
 
 ThreeDatesAsAdmin.args = {
-    diningCommons: diningCommonsFixtures.threeCommons,
+    article: articleFixtures.threeArticle,
     currentUser: currentUserFixtures.adminUser
 };
 
