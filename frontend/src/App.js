@@ -24,9 +24,9 @@ import OrganizationIndexPage from "main/pages/Organization/OrganizationIndexPage
 import OrganizationCreatePage from "main/pages/Organization/OrganizationCreatePage";
 import OrganizationEditPage from "main/pages/Organization/OrganizationEditPage";
 
-import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
-import RecommendationsCreatePage from "main/pages/Recommendations/RecommendationsCreatePage";
-import RecommendationsEditPage from "main/pages/Recommendations/RecommendationsEditPage";
+import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
+import RecommendationCreatePage from "main/pages/Recommendation/RecommendationCreatePage";
+import RecommendationEditPage from "main/pages/Recommendation/RecommendationEditPage";
 
 import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
 import ReviewCreatePage from "main/pages/Review/ReviewCreatePage";
@@ -128,15 +128,15 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/recommendation/list" element={<RecommendationsIndexPage />} />
+              <Route exact path="/recommendation/list" element={<RecommendationIndexPage />} />
             </>
           )
         }
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/recommendation/create" element={<RecommendationsCreatePage />} />
-              <Route exact path="/recommendation/edit/:id" element={<RecommendationsEditPage />} />
+              <Route exact path="/recommendation/create" element={<RecommendationCreatePage />} />
+              <Route exact path="/recommendation/edit/:id" element={<RecommendationEditPage />} />
             </>
           )
         }
