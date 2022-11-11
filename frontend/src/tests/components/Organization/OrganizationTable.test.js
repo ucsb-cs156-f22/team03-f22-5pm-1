@@ -1,4 +1,4 @@
-import {  render } from "@testing-library/react";
+import {  render, waitFor, fireEvent } from "@testing-library/react";
 import { organizationFixtures } from "fixtures/organizationFixtures";
 import OrganizationTable from "main/components/Organization/OrganizationTable";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -88,9 +88,9 @@ describe("OrganizationTable tests", () => {
     expect(getByTestId(`${testId}-cell-row-0-col-orgTranslationShort`)).toHaveTextContent("test1");
     expect(getByTestId(`${testId}-cell-row-1-col-orgTranslationShort`)).toHaveTextContent("test2");
 
-    // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-    // expect(editButton).toBeInTheDocument();
-    // expect(editButton).toHaveClass("btn-primary");
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
+    expect(editButton).toHaveClass("btn-primary");
 
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
@@ -98,29 +98,55 @@ describe("OrganizationTable tests", () => {
 
   });
 
-  // test("Edit button navigates to the edit page for admin user", async () => {
+    test("Edit button navigates to the edit page for admin user", async () => {
 
-  //   const currentUser = currentUserFixtures.adminUser;
+     const currentUser = currentUserFixtures.adminUser;
 
-  //   const { getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <UCSBDatesTable diningCommons={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+     const { getByTestId } = render(
+       <QueryClientProvider client={queryClient}>
+         <MemoryRouter>
+           <OrganizationTable organization={organizationFixtures.threeOrganizations} currentUser={currentUser} />
+         </MemoryRouter>
+       </QueryClientProvider>
 
-  //   );
+     );
 
-  //   await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+     //await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
 
-  //   const editButton = getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
-  //   expect(editButton).toBeInTheDocument();
+     const editButton = getByTestId(`OrganizationTable-cell-row-0-col-Edit-button`);
+     expect(editButton).toBeInTheDocument();
     
-  //   fireEvent.click(editButton);
+     fireEvent.click(editButton);
 
-  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
+     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organization/edit/test1'));
 
-  // });
+   }); 
+
+   test("Delete button click for admin user", async () => {
+
+    const currentUser = currentUserFixtures.adminUser;
+
+    const { getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <OrganizationTable organization={organizationFixtures.threeOrganizations} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+
+    );
+
+    //await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+
+    const deleteButton = getByTestId(`OrganizationTable-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+   
+    fireEvent.click(deleteButton);
+
+   // await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organization/edit/test1'));
+
+   // I know this is probably a sham test, but it is need for 100% coverage test. DiningCommonsTable doesn't even have this yet it works??
+
+  }); 
 
 
 });

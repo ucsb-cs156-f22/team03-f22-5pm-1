@@ -9,7 +9,7 @@ export function cellToAxiosParamsDelete(cell) {
         url: "/api/organization",
         method: "DELETE",
         params: {
-            code: cell.row.values.code
+            code: cell.row.values.orgCode
         }
     }
 }
@@ -19,7 +19,7 @@ export default function OrganizationTable({ organization, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/organization/edit/${cell.row.values.code}`)
+        navigate(`/organization/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -43,7 +43,7 @@ export default function OrganizationTable({ organization, currentUser }) {
             accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Org Translation ',
+            Header: 'Org Translation',
             accessor: 'orgTranslation',
         },
         {
