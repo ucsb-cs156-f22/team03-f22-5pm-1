@@ -6,7 +6,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/ucsbdiningcommons",
+        url: "/api/article",
         method: "DELETE",
         params: {
             code: cell.row.values.code
@@ -14,19 +14,19 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function DiningCommonsTable({ diningCommons, currentUser }) {
+export default function ArticleTable({ article, currentUser }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/diningCommons/edit/${cell.row.values.code}`)
+        navigate(`/article/edit/${cell.row.values.code}`)
     }
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdiningcommons/all"]
+        ["/api/article/all"]
     );
     // Stryker enable all 
 
@@ -35,40 +35,28 @@ export default function DiningCommonsTable({ diningCommons, currentUser }) {
 
     const columns = [
         {
-            Header: 'Code',
-            accessor: 'code', 
+            Header: 'Title',
+            accessor: 'title', 
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'URL',
+            accessor: 'url',
         },
         {
-            Header: 'Sack Meal?',
-            id: 'hasSackMeal', // needed for tests
-            accessor: (row, _rowIndex) => String(row.hasSackMeal) // hack needed for boolean values to show up
+            Header: 'Explanation',
+            accessor: 'explanation',
         },
         {
-            Header: 'Takeout Meal?',
-            id: 'hasTakeOutMeal', // needed for tests
-            accessor: (row, _rowIndex) => String(row.hasTakeOutMeal) // hack needed for boolean values to show up
-
+            Header: 'Email',
+            accessor: 'email',
         },
         {
-            Header: 'Dining Cam?',
-            id: 'hasDiningCam', // needed for tests
-            accessor: (row, _rowIndex) => String(row.hasDiningCam) // hack needed for boolean values to show up
-        },
-        {
-            Header: 'Latitude',
-            accessor: 'latitude',
-        },
-        {
-            Header: 'Longitude',
-            accessor: 'longitude',
+            Header: 'Date Added',
+            accessor: 'dateAdded',
         }
     ];
 
-    const testid = "DiningCommonsTable";
+    const testid = "ArticleTable";
 
     const columnsIfAdmin = [
         ...columns,
@@ -79,7 +67,7 @@ export default function DiningCommonsTable({ diningCommons, currentUser }) {
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
-        data={diningCommons}
+        data={article}
         columns={columnsToDisplay}
         testid={testid}
     />;
