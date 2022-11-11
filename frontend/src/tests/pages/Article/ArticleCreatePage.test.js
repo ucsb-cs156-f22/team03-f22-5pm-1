@@ -54,10 +54,9 @@ describe("ArticleCreatePage tests", () => {
     test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
 
         const queryClient = new QueryClient();
-        //LocalDateTime ldt = LocalDateTime.parse("2022-01-03T00:00:00");
 
         const article = {
-            "code": "Article1",
+            "title": "Article1",
             "url": "article1",
             "explanation": "Article1 explanation",
             "email": "article1@gmail.com",
@@ -83,6 +82,7 @@ describe("ArticleCreatePage tests", () => {
         const urlField = getByTestId("ArticleForm-url");
         const explanationField = getByTestId("ArticleForm-explanation");
         const emailField = getByTestId("ArticleForm-email");
+        const dateAddedField = getByTestId("ArticleForm-dateAdded");
 
         const submitButton = getByTestId("ArticleForm-submit");
 
@@ -90,6 +90,8 @@ describe("ArticleCreatePage tests", () => {
         fireEvent.change(urlField, { target: { value: 'article1' } });
         fireEvent.change(explanationField, { target: { value: 'Article1 explanation' } });
         fireEvent.change(emailField, { target: { value: 'article1@gmail.com' } });
+        fireEvent.change(dateAddedField, { target: { value: '2022-01-03T00:00:00' } });
+
 
         expect(submitButton).toBeInTheDocument();
 
@@ -98,7 +100,7 @@ describe("ArticleCreatePage tests", () => {
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
-            "code": "Article1",
+            "title": "Article1",
             "url": "article1",
             "explanation": "Article1 explanation",
             "email": "article1@gmail.com",
