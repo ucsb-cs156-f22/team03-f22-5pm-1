@@ -17,12 +17,6 @@ function HelpRequestsForm({ initialHelpRequests, submitAction, buttonLabel = "Cr
     const navigate = useNavigate();
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
-    
-    const minLat = -90.0;
-    const maxLat = 90.0;
-    const minLong = -180.0;
-    const maxLong = 180.0;
-
     return (
 
         <Form onSubmit={handleSubmit(submitAction)}>
