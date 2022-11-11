@@ -66,6 +66,7 @@ export default function DiningCommonsEditPage() {
         {commons &&
           <DiningCommonsForm initialCommons={commons} submitAction={onSubmit} buttonLabel="Update" />
         }
+        {!commons && <p>No Commons!!</p>}
       </div>
     </BasicLayout>
   )
