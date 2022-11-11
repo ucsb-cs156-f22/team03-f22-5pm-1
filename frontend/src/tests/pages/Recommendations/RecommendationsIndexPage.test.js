@@ -1,7 +1,7 @@
 import { /* fireEvent, */ render, /* waitFor */ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
+import RecommendationIndexPage from "main/pages/Recommendation/RecommendationIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -26,7 +26,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("RecommendationsIndexPage tests", () => {
+describe("RecommendationIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
@@ -54,7 +54,7 @@ describe("RecommendationsIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <RecommendationIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -70,7 +70,7 @@ describe("RecommendationsIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsIndexPage />
+                    <RecommendationIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );

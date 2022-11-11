@@ -4,7 +4,7 @@ import React from 'react'
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 // import { useCurrentUser } from 'main/utils/currentUser' // use prefix indicates a React Hook
 
-export default function RecommendationsIndexPage() {
+export default function RecommendationIndexPage() {
 
 //   const { data: recommendation, error: _error, status: _status } =
 //     useBackend(
