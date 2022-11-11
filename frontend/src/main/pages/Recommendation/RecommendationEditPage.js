@@ -4,7 +4,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 // import { useBackend, useBackendMutation } from "main/utils/useBackend";
 // import { toast } from "react-toastify";
 
-export default function DiningCommonsEditPage() {
+export default function RecommendationEditPage() {
 
   return (
     <BasicLayout>

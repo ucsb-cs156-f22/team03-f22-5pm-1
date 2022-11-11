@@ -1,5 +1,5 @@
 import { render /*, waitFor, fireEvent */ } from "@testing-library/react";
-import RecommendationsCreatePage from "main/pages/Recommendations/RecommendationsCreatePage";
+import RecommendationCreatePage from "main/pages/Recommendation/RecommendationCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -30,7 +30,7 @@ jest.mock('react-router-dom', () => {
 });
 
 
-describe("RecommendationsCreatePage tests", () => {
+describe("RecommendationCreatePage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
@@ -46,7 +46,7 @@ describe("RecommendationsCreatePage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationsCreatePage />
+                    <RecommendationCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );

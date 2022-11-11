@@ -1,7 +1,7 @@
 import { /*fireEvent, */render/*, waitFor*/ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RecommendationsEditPage from "main/pages/Recommendations/RecommendationsEditPage";
+import RecommendationEditPage from "main/pages/Recommendation/RecommendationEditPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -33,7 +33,7 @@ jest.mock('react-router-dom', () => {
     };
 });
 
-describe("RecommendationsEditPage tests", () => {
+describe("RecommendationEditPage tests", () => {
 
     describe("tests where backend is working normally", () => {
 
@@ -51,7 +51,7 @@ describe("RecommendationsEditPage tests", () => {
             render(
                 <QueryClientProvider client={queryClient}>
                     <MemoryRouter>
-                        <RecommendationsEditPage />
+                        <RecommendationEditPage />
                     </MemoryRouter>
                 </QueryClientProvider>
             );

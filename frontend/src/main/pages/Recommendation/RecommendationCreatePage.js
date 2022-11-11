@@ -3,7 +3,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 // import { useBackendMutation } from "main/utils/useBackend";
 // import { toast } from "react-toastify";
 
-export default function RecommendationsCreatePage() {
+export default function RecommendationCreatePage() {
 
     return (
         <BasicLayout>
