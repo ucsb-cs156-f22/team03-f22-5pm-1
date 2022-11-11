@@ -30,7 +30,6 @@ export default function ArticleEditPage() {
     },
     data: {
       url: article.url,
-      hasDiningCam: article.hasDiningCam,
       explanation: article.explanation,
       email: article.email,
       dateAdded: article.dateAdded,

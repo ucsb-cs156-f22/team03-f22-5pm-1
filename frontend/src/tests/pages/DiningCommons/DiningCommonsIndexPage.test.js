@@ -202,8 +202,6 @@ describe("UCSBDatesIndexPage tests", () => {
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/diningCommons/edit/de-la-guerra'));
 
     });
-
-
 });
 
 

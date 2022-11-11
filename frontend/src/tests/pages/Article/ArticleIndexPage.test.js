@@ -33,7 +33,7 @@ describe("ArticleIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "Article";
+    const testId = "ArticleTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -84,7 +84,7 @@ describe("ArticleIndexPage tests", () => {
     test("renders three article without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeArticles);
+        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeArticle);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -94,16 +94,16 @@ describe("ArticleIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("article1"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("article2");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("article3");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-url`)).toHaveTextContent("article11"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("article12");
+        expect(getByTestId(`${testId}-cell-row-2-col-url`)).toHaveTextContent("article13");
 
     });
 
     test("renders three articles without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeCommons);
+        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeArticle);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -113,9 +113,9 @@ describe("ArticleIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("article1"); });
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("article2");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("article3");
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-url`)).toHaveTextContent("article11"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("article12");
+        expect(getByTestId(`${testId}-cell-row-2-col-url`)).toHaveTextContent("article13");
 
     });
 
@@ -135,21 +135,21 @@ describe("ArticleIndexPage tests", () => {
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
-        const expectedHeaders = ['title', 'url', 'explanation', 'email', 'dateAdded'];
+        const expectedHeaders = ['Title', 'URL', 'Explanation', 'Email', 'Date Added'];
     
         expectedHeaders.forEach((headerText) => {
           const header = getByText(headerText);
           expect(header).toBeInTheDocument();
         });
 
-        expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
+        expect(queryByTestId(`${testId}-cell-row-0-col-url`)).not.toBeInTheDocument();
     });
 
     test("test what happens when you click edit as an admin", async () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeCommons);
+        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeArticle);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -159,9 +159,9 @@ describe("ArticleIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toBeInTheDocument(); });
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-url`)).toBeInTheDocument(); });
 
-        expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("article1"); 
+        expect(getByTestId(`${testId}-cell-row-0-col-url`)).toHaveTextContent("article11"); 
 
 
         const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
@@ -169,7 +169,7 @@ describe("ArticleIndexPage tests", () => {
        
         fireEvent.click(editButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/article/edit/article1'));
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/article/edit/article11'));
 
     });
 });

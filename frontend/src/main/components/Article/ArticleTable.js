@@ -4,12 +4,22 @@ import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/article",
+        method: "DELETE",
+        params: {
+            code: cell.row.values.code
+        }
+    }
+}
+
 export default function ArticleTable({ article, currentUser }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/article/edit/${cell.row.values.code}`)
+        navigate(`/article/edit/${cell.row.values.url}`)
     }
 
     // Stryker disable all : hard to test for query caching
