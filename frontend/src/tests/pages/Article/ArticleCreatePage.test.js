@@ -61,7 +61,7 @@ describe("ArticleCreatePage tests", () => {
             "url": "article1",
             "explanation": "Article1 explanation",
             "email": "article1@gmail.com",
-            "date": "2022-01-03T00:00:00",
+            "dateAdded": "2022-01-03T00:00:00",
           };
         
     
@@ -102,7 +102,7 @@ describe("ArticleCreatePage tests", () => {
             "url": "article1",
             "explanation": "Article1 explanation",
             "email": "article1@gmail.com",
-            "date": "2022-01-03T00:00:00",
+            "dateAdded": "2022-01-03T00:00:00",
         });
 
         expect(mockToast).toBeCalledWith("New Article Created - title: Article1 url: article1");
