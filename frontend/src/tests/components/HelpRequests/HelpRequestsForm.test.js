@@ -46,10 +46,6 @@ describe("HelpRequestsForm tests", () => {
             </Router>
         );
         await waitFor(() => expect(getByTestId("HelpRequestsForm-requesterEmail")).toBeInTheDocument());
-        const requesterEmailField = getByTestId("HelpRequestsForm-requesterEmail");
-        const teamIdField = getByTestId("HelpRequestsForm-teamId");
-        const tableOrBreakoutRoomField = getByTestId("HelpRequestsForm-tableOrBreakoutRoom");
-        const explanationField = getByTestId("HelpRequestsForm-explanation");
         const requestTimeField = getByTestId("HelpRequestsForm-requestTime");
         const submitButton = getByTestId("HelpRequestsForm-submit");
 
@@ -98,7 +94,6 @@ describe("HelpRequestsForm tests", () => {
         const teamIdField = getByTestId("HelpRequestsForm-teamId");
         const tableOrBreakoutRoomField = getByTestId("HelpRequestsForm-tableOrBreakoutRoom");
         const explanationField = getByTestId("HelpRequestsForm-explanation");
-        const solvedField = getByTestId("HelpRequestsForm-solved");
         const requestTimeField = getByTestId("HelpRequestsForm-requestTime");
         const submitButton = getByTestId("HelpRequestsForm-submit");
 
