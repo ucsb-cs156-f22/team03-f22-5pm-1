@@ -25,7 +25,7 @@ export default function HelpRequestsTable({ helprequests, currentUser }) {
 
     const columns = [
         {
-            Header: 'id',
+            Header: 'Id',
             accessor: 'id', // accessor is the "key" in the data
         },
         {
@@ -41,7 +41,7 @@ export default function HelpRequestsTable({ helprequests, currentUser }) {
             accessor: 'tableOrBreakoutRoom',
         },
         {
-            Header: 'explanation',
+            Header: 'Explanation',
             accessor: 'explanation',
         },
         {
