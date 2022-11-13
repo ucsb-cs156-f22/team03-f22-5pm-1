@@ -47,8 +47,7 @@ export default function ReviewTable({ reviews, currentUser }) {
         {
             Header: 'comments',
             accessor: 'comments',
-        }
-        
+        } 
     ];
 
     const columnsIfAdmin = [
