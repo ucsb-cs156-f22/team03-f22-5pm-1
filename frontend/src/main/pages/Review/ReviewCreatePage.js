@@ -10,7 +10,7 @@ export default function ReviewCreatePage() {
     url: "/api/reviews/post",
     method: "POST",
     params: {
-      itemID: review.itemID,
+      itemId: review.itemId,
       reviewerEmail: review.reviewerEmail,
       stars: review.stars,
       dateReviewed: review.dateReviewed,
@@ -36,7 +36,7 @@ export default function ReviewCreatePage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/reviews/list" />
+    return <Navigate to="/review/list" />
   }
 
   return (

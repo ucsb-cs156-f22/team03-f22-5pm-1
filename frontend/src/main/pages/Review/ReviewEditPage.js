@@ -29,7 +29,7 @@ export default function ReviewEditPage() {
       id: review.id,
     },
     data: {
-      itemID: review.itemID,
+      itemId: review.itemId,
       reviewerEmail: review.reviewerEmail,
       stars: review.stars,
       dateReviewed: review.dateReviewed,
@@ -55,7 +55,7 @@ export default function ReviewEditPage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/reviews/list" />
+    return <Navigate to="/review/list" />
   }
 
   return (
