@@ -4,7 +4,7 @@ import ReviewTable from "main/components/Review/ReviewTable";
 import { reviewsFixtures } from 'fixtures/reviewsFixtures';
 
 export default {
-    title: 'components/Review/ReviewTables',
+    title: 'components/Review/ReviewTable',
     component: ReviewTable
 };
 
