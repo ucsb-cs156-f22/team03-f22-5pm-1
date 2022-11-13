@@ -171,12 +171,12 @@ describe("ReviewEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled);
             expect(mockToast).toBeCalledWith("Review Updated - id: 17");
-            expect(mockNavigate).toBeCalledWith({ "to": "/reviews/list" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/review/list" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
-                itemID : '69',
+                itemId : '69',
                 reviewerEmail: "correctemail@ucsb.edu",
                 stars: "5",
                 dateReviewed: "2022-12-25T08:00",

@@ -96,7 +96,7 @@ describe("ReviewCreatePage tests", () => {
 
         expect(axiosMock.history.post[0].params).toEqual(
             {
-                "itemID": "24",
+                "itemId": "24",
                 "reviewerEmail": "ethanlee@ucsb.edu",
                 "stars": "5",
                 "dateReviewed": "2022-02-02T00:00",
@@ -104,7 +104,7 @@ describe("ReviewCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New review Created - id: 17");
-        expect(mockNavigate).toBeCalledWith({ "to": "/reviews/list" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/review/list" });
     });
 
 

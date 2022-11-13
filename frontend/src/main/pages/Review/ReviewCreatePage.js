@@ -10,7 +10,7 @@ export default function ReviewCreatePage() {
     url: "/api/reviews/post",
     method: "POST",
     params: {
-      itemId: review.itemId,
+      itemId: review.itemID,
       reviewerEmail: review.reviewerEmail,
       stars: review.stars,
       dateReviewed: review.dateReviewed,
