@@ -10,7 +10,6 @@ export default function RecommendationCreatePage() {
         url: "/api/recommendations/post",
         method: "POST",
         params: {
-            id: recommendation.id,
             requesterEmail: recommendation.requesterEmail,
             professorEmail: recommendation.professorEmail,
             explanation: recommendation.explanation,
