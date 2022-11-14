@@ -1,17 +1,17 @@
 import React from 'react';
 
-import DiningCommonsForm from "main/components/DiningCommons/DiningCommonsForm"
-import { diningCommonsFixtures } from 'fixtures/diningCommonsFixtures';
+import OrganizationForm from "main/components/Organization/OrganizationForm"
+import { organizationFixtures } from 'fixtures/organizationFixtures';
 
 export default {
-    title: 'components/DiningCommons/DiningCommonsForm',
-    component: DiningCommonsForm
+    title: 'components/Organization/OrganizationForm',
+    component: OrganizationForm
 };
 
 
 const Template = (args) => {
     return (
-        <DiningCommonsForm {...args} />
+        <OrganizationForm {...args} />
     )
 };
 
@@ -25,7 +25,7 @@ Default.args = {
 export const Show = Template.bind({});
 
 Show.args = {
-    initialOrg: diningCommonsFixtures.oneDiningCommons,
+    initialCommons: organizationFixtures.oneOrganization,
     buttonLabel: "Update",
     submitAction: (data) => { console.log('Update was clicked, parameter to submitAction=',data); }
 };
