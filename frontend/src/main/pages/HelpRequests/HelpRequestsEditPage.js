@@ -14,7 +14,7 @@ export default function HelpRequestsEditPage() {
     [`/api/helprequests?id=${id}`],
     {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
       method: "GET",
-      url: `/api/helprequests`,
+      url: `/api/ucsbhelprequest`,
       params: {
         id
       }
@@ -22,7 +22,7 @@ export default function HelpRequestsEditPage() {
   );
 
   const objectToAxiosPutParams = (helprequests) => ({
-    url: "/api/helprequests",
+    url: "/api/ucsbhelprequest",
     method: "PUT",
     params: {
       id: helprequests.id,
@@ -45,7 +45,7 @@ export default function HelpRequestsEditPage() {
     objectToAxiosPutParams,
     { onSuccess},
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/helprequests?id=${id}`]
+    [`/api/ucsbhelprequest?id=${id}`]
   );
 
   const { isSuccess } = mutation
@@ -55,7 +55,7 @@ export default function HelpRequestsEditPage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/helprequests/list" />
+    return <Navigate to="/ucsbhelprequest/list" />
   }
 
   return (

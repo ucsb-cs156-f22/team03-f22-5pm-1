@@ -63,7 +63,7 @@ describe("HelpRequestsCreatePage tests", () => {
             requestTime: "2022-02-02T00:00"
         };
 
-        axiosMock.onPost("/api/helprequests/post").reply( 202, helprequests );
+        axiosMock.onPost("/api/ucsbhelprequest/post").reply( 202, helprequests );
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -107,7 +107,7 @@ describe("HelpRequestsCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 17 teamId: Dog");
-        expect(mockNavigate).toBeCalledWith({ "to": "/helprequests/list" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/ucsbhelprequest/list" });
     });
 
 

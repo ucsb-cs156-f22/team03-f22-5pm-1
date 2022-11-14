@@ -52,7 +52,7 @@ describe("HelpRequestsIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, []);
+        axiosMock.onGet("/api/ucsbhelprequest/all").reply(200, []);
     
         render(
             <QueryClientProvider client={queryClient}>
@@ -67,7 +67,7 @@ describe("HelpRequestsIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, []);
+        axiosMock.onGet("/api/ucsbhelprequest/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -83,7 +83,7 @@ describe("HelpRequestsIndexPage tests", () => {
     test("renders three dates without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, HelpRequestsFixtures.threeHelpRequests);
+        axiosMock.onGet("/api/ucsbhelprequest/all").reply(200, HelpRequestsFixtures.threeHelpRequests);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -103,7 +103,7 @@ describe("HelpRequestsIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").timeout();
+        axiosMock.onGet("/api/ucsbhelprequest/all").timeout();
 
         const restoreConsole = mockConsole();
 
@@ -125,7 +125,7 @@ describe("HelpRequestsIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/helprequests/all").reply(200, HelpRequestsFixtures.threeHelpRequests);
+        axiosMock.onGet("/api/ucsbhelprequest/all").reply(200, HelpRequestsFixtures.threeHelpRequests);
 
 
         const { getByTestId } = render(
@@ -146,7 +146,7 @@ describe("HelpRequestsIndexPage tests", () => {
        
         fireEvent.click(editButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/helpRequests/edit/1'));
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbhelprequest/edit/1'));
 
     });
 
