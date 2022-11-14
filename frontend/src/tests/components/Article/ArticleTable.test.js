@@ -1,6 +1,6 @@
-import {  render } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { articleFixtures } from "fixtures/articleFixtures";
-import ArticleTable from "main/components/Article/ArticleTable";
+import ArticleTable from "main/components/Article/ArticleTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -55,7 +55,7 @@ describe("ArticleTable tests", () => {
     );
   });
 
-  test("Has the expected column headers and content for adminUser", () => {
+  test("Has the expected colum headers and content for adminUser", () => {
 
     const currentUser = currentUserFixtures.adminUser;
 
@@ -68,9 +68,8 @@ describe("ArticleTable tests", () => {
 
     );
 
-
-    const expectedHeaders = ['Title',  'URL', 'Explanation','Email','Date Added'];
-    const expectedFields = ['title', 'url','explanation','email','dateAdded'];
+    const expectedHeaders = ["Title", "URL", "Explanation", "Email", "Date Added"];
+    const expectedFields = ["title", "url", "explanation", "email", "dateAdded"];
     const testId = "ArticleTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -85,43 +84,38 @@ describe("ArticleTable tests", () => {
 
     expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("Article11");
     expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("Article12");
-    expect(getByTestId(`${testId}-cell-row-0-col-url`)).toHaveTextContent("article11");
-    expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("article12");
 
-    // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-    // expect(editButton).toBeInTheDocument();
-    // expect(editButton).toHaveClass("btn-primary");
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
+    expect(editButton).toHaveClass("btn-primary");
 
-    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    expect(deleteButton).toBeInTheDocument();
-    expect(deleteButton).toHaveClass("btn-danger");
+    // Delete Tests
 
   });
 
-  // test("Edit button navigates to the edit page for admin user", async () => {
+  test("Edit button navigates to the edit page for admin user", async () => {
 
-  //   const currentUser = currentUserFixtures.adminUser;
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   const { getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <UCSBDatesTable article={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    const { getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ArticleTable article={articleFixtures.threeArticle} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  //   );
+    );
 
-  //   await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    await waitFor(() => { expect(getByTestId(`ArticleTable-cell-row-0-col-title`)).toHaveTextContent("Article11"); });
 
-  //   const editButton = getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
-  //   expect(editButton).toBeInTheDocument();
+    const editButton = getByTestId(`ArticleTable-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
     
-  //   fireEvent.click(editButton);
+    fireEvent.click(editButton);
 
-  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/article/edit/article11'));
 
-  // });
-
+  });
 
 });
 
