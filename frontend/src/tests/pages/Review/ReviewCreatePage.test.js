@@ -97,6 +97,7 @@ describe("ReviewCreatePage tests", () => {
         expect(axiosMock.history.post[0].params).toEqual(
             {
                 "itemId": "24",
+                "itemId": undefined,
                 "reviewerEmail": "ethanlee@ucsb.edu",
                 "stars": "5",
                 "dateReviewed": "2022-02-02T00:00",
