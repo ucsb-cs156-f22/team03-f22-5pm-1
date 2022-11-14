@@ -43,7 +43,7 @@ function ReviewForm({ initialReview, submitAction, buttonLabel="Create" }) {
             )}
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="itemId">itemId</Form.Label>
+                <Form.Label htmlFor="itemID">itemID</Form.Label>
                 <Form.Control
                     data-testid="ReviewForm-itemId"
                     id="itemId"

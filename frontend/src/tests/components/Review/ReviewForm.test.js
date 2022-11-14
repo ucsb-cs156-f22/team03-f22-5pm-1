@@ -33,7 +33,7 @@ describe("ReviewForm tests", () => {
             </Router>
         );
         await waitFor(() => expect(getByTestId(/ReviewForm-id/)).toBeInTheDocument());
-        //expect(getByText(/Id/)).toBeInTheDocument();
+        expect(getByText(/Id/)).toBeInTheDocument();
         expect(getByTestId(/ReviewForm-id/)).toHaveValue("1");
     });
 
