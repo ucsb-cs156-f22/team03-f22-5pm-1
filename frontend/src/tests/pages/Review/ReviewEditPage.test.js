@@ -60,7 +60,7 @@ describe("ReviewEditPage tests", () => {
                 </QueryClientProvider>
             );
             await waitFor(() => expect(getByText("Edit Review")).toBeInTheDocument());
-            expect(queryByTestId("ReviewForm-itemID")).not.toBeInTheDocument();
+            expect(queryByTestId("ReviewForm-itemId")).not.toBeInTheDocument();
             restoreConsole();
         });
     });
@@ -76,7 +76,7 @@ describe("ReviewEditPage tests", () => {
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
             axiosMock.onGet("/api/reviews", { params: { id: 17 } }).reply(200, {
                 id: 17,
-                itemID : '59',
+                itemId : '59',
                 reviewerEmail: "boblee@ucsb.edu",
                 stars: "0",
                 dateReviewed: "2022-03-14T15:00",
@@ -84,7 +84,7 @@ describe("ReviewEditPage tests", () => {
             });
             axiosMock.onPut('/api/reviews').reply(200, {
                 id: 17,
-                itemID : '69',
+                itemId : '69',
                 reviewerEmail: "correctemail@ucsb.edu",
                 stars: "5",
                 dateReviewed: "2022-12-25T08:00",
@@ -113,17 +113,17 @@ describe("ReviewEditPage tests", () => {
                 </QueryClientProvider>
             );
 
-            await waitFor(() => expect(getByTestId("ReviewForm-itemID")).toBeInTheDocument());
+            await waitFor(() => expect(getByTestId("ReviewForm-itemId")).toBeInTheDocument());
 
             const idField = getByTestId("ReviewForm-id");
-            const itemIDField = getByTestId("ReviewForm-itemID");
+            const itemIdField = getByTestId("ReviewForm-itemId");
             const reviewerEmailField = getByTestId("ReviewForm-reviewerEmail");
             const starsField = getByTestId("ReviewForm-stars");
             const dateReviewedField = getByTestId("ReviewForm-dateReviewed");
             const commentsField = getByTestId("ReviewForm-comments");
 
             expect(idField).toHaveValue("17");
-            expect(itemIDField).toHaveValue("59");
+            expect(itemIdField).toHaveValue("59");
             expect(reviewerEmailField).toHaveValue("boblee@ucsb.edu");
             expect(starsField).toHaveValue("0");
             expect(dateReviewedField).toHaveValue("2022-03-14T15:00");
@@ -142,10 +142,10 @@ describe("ReviewEditPage tests", () => {
                 </QueryClientProvider>
             );
 
-            await waitFor(() => expect(getByTestId("ReviewForm-itemID")).toBeInTheDocument());
+            await waitFor(() => expect(getByTestId("ReviewForm-itemId")).toBeInTheDocument());
 
             const idField = getByTestId("ReviewForm-id");
-            const itemIDField = getByTestId("ReviewForm-itemID");
+            const itemIdField = getByTestId("ReviewForm-itemId");
             const reviewerEmailField = getByTestId("ReviewForm-reviewerEmail");
             const starsField = getByTestId("ReviewForm-stars");
             const dateReviewedField = getByTestId("ReviewForm-dateReviewed");
@@ -153,7 +153,7 @@ describe("ReviewEditPage tests", () => {
             const submitButton = getByTestId("ReviewForm-submit");
 
             expect(idField).toHaveValue("17");
-            expect(itemIDField).toHaveValue("59");
+            expect(itemIdField).toHaveValue("59");
             expect(reviewerEmailField).toHaveValue("boblee@ucsb.edu");
             expect(starsField).toHaveValue("0");
             expect(dateReviewedField).toHaveValue("2022-03-14T15:00");
@@ -161,7 +161,7 @@ describe("ReviewEditPage tests", () => {
 
             expect(submitButton).toBeInTheDocument();
 
-            fireEvent.change(itemIDField, { target: { value: '69' } })
+            fireEvent.change(itemIdField, { target: { value: '69' } })
             fireEvent.change(reviewerEmailField, { target: { value: 'correctemail@ucsb.edu' } })
             fireEvent.change(starsField, { target: { value: "5" } })
             fireEvent.change(dateReviewedField, { target: { value: "2022-12-25T08:00" } })
