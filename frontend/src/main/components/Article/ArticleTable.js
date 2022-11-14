@@ -21,7 +21,7 @@ export default function ArticleTable({ article, currentUser }) {
     const editCallback = (cell) => {
         navigate(`/article/edit/${cell.row.values.url}`)
     }
-    
+
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,

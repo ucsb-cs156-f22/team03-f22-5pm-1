@@ -38,7 +38,6 @@ describe("UCSBDatesTable tests", () => {
           <UCSBDatesTable dates={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
-
     );
   });
 
