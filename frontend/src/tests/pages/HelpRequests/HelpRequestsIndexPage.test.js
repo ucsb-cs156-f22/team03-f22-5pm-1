@@ -151,6 +151,34 @@ describe("HelpRequestsIndexPage tests", () => {
     });
 
 
+    test("test what happens when you click delete, admin", async () => {
+        setupAdminUser();
+
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/ucsbhelprequest/all").reply(200, HelpRequestsFixtures.threeHelpRequests);
+        axiosMock.onDelete("/api/ucsbhelprequest").reply(200, "UCSBHelpRequest with id 1 was deleted");
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <HelpRequestsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
+
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); 
+
+
+        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
+       
+        fireEvent.click(deleteButton);
+
+        await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBHelpRequest with id 1 was deleted") });
+
+    });
 });
 
 
