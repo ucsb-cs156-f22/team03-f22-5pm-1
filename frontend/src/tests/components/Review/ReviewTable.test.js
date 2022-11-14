@@ -1,10 +1,10 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { reviewsFixtures } from "fixtures/reviewsFixtures";
-import ReviewTable from "main/components/Review/ReviewTable"
+import  ReviewTable from "main/components/Review/ReviewTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
-
+import { cellToAxiosParamsDelete } from "main/components/Review/ReviewTable";
 
 const mockedNavigate = jest.fn();
 
@@ -119,4 +119,22 @@ describe("ReviewTable tests", () => {
 
   });
 
+});
+
+describe("cellToAxiosParamsDelete", () => {
+
+  test("It returns the correct params", () => {
+      // arrange
+      const cell = { row: { values: { id: 17 } } };
+
+      // act
+      const result = cellToAxiosParamsDelete(cell);
+
+      // assert
+      expect(result).toEqual({
+          url: "/api/reviews",
+          method: "DELETE",
+          params: { id: 17 }
+      });
+  });
 });
