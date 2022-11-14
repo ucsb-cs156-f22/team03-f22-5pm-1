@@ -84,7 +84,7 @@ function HelpRequestsForm({ initialHelpRequests, submitAction, buttonLabel = "Cr
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="explanation">explanation</Form.Label>
+                <Form.Label htmlFor="explanation">Explanation</Form.Label>
                 <Form.Control
                     data-testid="HelpRequestsForm-explanation"
                     id="explanation"
