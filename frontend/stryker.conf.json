@@ -7,7 +7,6 @@
         "clear-text",
         "html"
     ],
-    "timeoutMS": 1000000,
     "coverageAnalysis": "off",
     "jest": {
         "projectType": "create-react-app"
