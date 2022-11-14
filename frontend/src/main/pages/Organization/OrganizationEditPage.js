@@ -55,7 +55,7 @@ export default function OrganizationEditPage() {
     return <Navigate to="/organization/list" />
   }
 
-  console.log("CHECK THIS OUT ", organization);
+  //console.log("CHECK THIS OUT ", organization);
 
   return (
     <BasicLayout>
@@ -64,7 +64,6 @@ export default function OrganizationEditPage() {
         {organization &&
           <OrganizationForm initialOrg={organization} submitAction={onSubmit} buttonLabel="Update" />
         }
-        {!organization && <p>No Organization!!: {_error}, {_status}</p>}
       </div>
     </BasicLayout>
   )

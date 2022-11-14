@@ -42,11 +42,8 @@ export default function OrganizationCreatePage() {
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Organizations</h1>
-
-        <p>
-          This is where the create page will go
-        </p>
+        <h1>Create Organization</h1>
+          <OrganizationForm submitAction={onSubmit} buttonLabel="Create" />
       </div>
     </BasicLayout>
   )
