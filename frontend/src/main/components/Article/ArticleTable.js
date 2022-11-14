@@ -4,7 +4,15 @@ import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-// Delete Function
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/article",
+        method: "DELETE",
+        params: {
+            title: cell.row.values.title
+        }
+    }
+}
 
 export default function ArticleTable({ article, currentUser }) {
 
@@ -14,7 +22,15 @@ export default function ArticleTable({ article, currentUser }) {
         navigate(`/article/edit/${cell.row.values.url}`)
     }
     
-    // Stryker Delete Test
+    // Stryker disable all : hard to test for query caching
+    const deleteMutation = useBackendMutation(
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
+        ["/api/article/all"]
+    );
+
+    // Stryker disable next-line all : TODO try to make a good test for this
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
         {
@@ -44,7 +60,7 @@ export default function ArticleTable({ article, currentUser }) {
     const columnsIfAdmin = [
         ...columns,
         ButtonColumn("Edit", "primary", editCallback, testid),
-        // Button Column 
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
