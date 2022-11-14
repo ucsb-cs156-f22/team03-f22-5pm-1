@@ -4,7 +4,7 @@ import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-// Delete Function
+// Delete function
 
 export default function ArticleTable({ article, currentUser }) {
 
@@ -14,7 +14,7 @@ export default function ArticleTable({ article, currentUser }) {
         navigate(`/article/edit/${cell.row.values.url}`)
     }
     
-    // Stryker Delete Test
+    // Delete Implement
 
     const columns = [
         {
@@ -44,7 +44,7 @@ export default function ArticleTable({ article, currentUser }) {
     const columnsIfAdmin = [
         ...columns,
         ButtonColumn("Edit", "primary", editCallback, testid),
-        // Button Column 
+        // ButtonColumn  
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;

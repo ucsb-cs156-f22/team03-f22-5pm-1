@@ -89,8 +89,6 @@ describe("ArticleTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
-    // Delete Tests
-
   });
 
   test("Edit button navigates to the edit page for admin user", async () => {
