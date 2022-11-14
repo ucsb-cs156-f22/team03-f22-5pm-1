@@ -9,7 +9,7 @@ export default function ReviewTable({ reviews, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/reviews/edit/${cell.row.values.id}`)
+        navigate(`/review/edit/${cell.row.values.id}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -30,7 +30,7 @@ export default function ReviewTable({ reviews, currentUser }) {
         },
         {
             Header: 'itemID',
-            accessor: 'itemID',
+            accessor: 'itemId',
         },
         {
             Header: 'reviewerEmail',
@@ -47,8 +47,7 @@ export default function ReviewTable({ reviews, currentUser }) {
         {
             Header: 'comments',
             accessor: 'comments',
-        }
-        
+        } 
     ];
 
     const columnsIfAdmin = [

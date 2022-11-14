@@ -69,7 +69,7 @@ describe("ReviewTable tests", () => {
     );
 
     const expectedHeaders = ["id", "itemID", "reviewerEmail", "stars", "dateReviewed", "comments"];
-    const expectedFields = ["id", "itemID", "reviewerEmail", "stars", "dateReviewed", "comments"];
+    const expectedFields = ["id", "itemId", "reviewerEmail", "stars", "dateReviewed", "comments"];
     const testId = "ReviewTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -115,7 +115,7 @@ describe("ReviewTable tests", () => {
     
     fireEvent.click(editButton);
 
-    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/reviews/edit/1'));
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/review/edit/1'));
 
   });
 
