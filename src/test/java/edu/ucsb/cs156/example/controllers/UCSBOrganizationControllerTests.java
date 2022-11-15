@@ -253,7 +253,7 @@ public class UCSBOrganizationControllerTests  extends ControllerTestCase {
                                 .build();
 
                 UCSBOrganization testEdited = UCSBOrganization.builder()
-                                .orgCode("test5")
+                                .orgCode("test")
                                 .orgTranslation("test5")
                                 .orgTranslationShort("test5")
                                 .inactive(true)
