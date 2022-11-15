@@ -1,7 +1,20 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
-// import { useBackendMutation } from "main/utils/useBackend";
+import { useBackendMutation } from "main/utils/useBackend";
 import { useNavigate } from "react-router-dom";
+import { onDeleteSuccess } from "main/utils/UCSBDateUtils"
 import { hasRole } from "main/utils/currentUser";
+
+
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/menuitem",
+        method: "DELETE",
+        params: {
+            id: cell.row.values.id
+        }
+    }
+}
+
 
 export default function MenuItemTable({ menuitem, currentUser }) {
 
@@ -12,6 +25,14 @@ export default function MenuItemTable({ menuitem, currentUser }) {
     const editCallback = (cell) => {
         navigate(`/menuitem/edit/${cell.row.values.id}`)
     }
+
+    const deleteMutation = useBackendMutation(
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
+        ["/api/menuitem/all"]
+    );
+
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
     
     
     const columns = [
@@ -38,8 +59,8 @@ export default function MenuItemTable({ menuitem, currentUser }) {
 
     const columnsIfAdmin = [
         ...columns,
-        ButtonColumn("Edit", "primary", editCallback, "MenuItemTable")
-        //ButtonColumn("Delete", "danger", deleteCallback, "MenuItemTable")
+        ButtonColumn("Edit", "primary", editCallback, "MenuItemTable"),
+        ButtonColumn("Delete", "danger", deleteCallback, "MenuItemTable")
         
     ];
 

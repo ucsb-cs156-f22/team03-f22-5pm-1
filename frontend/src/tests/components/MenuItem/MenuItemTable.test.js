@@ -4,6 +4,7 @@ import MenuItemTable from "main/components/MenuItem/MenuItemTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { cellToAxiosParamsDelete } from "main/components/MenuItem/MenuItemTable";
 
 
 const mockedNavigate = jest.fn();
@@ -91,9 +92,9 @@ describe("MenuItemTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
     
-    //const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    //expect(deleteButton).toBeInTheDocument();
-    //expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
     
   });
   
@@ -120,5 +121,25 @@ describe("MenuItemTable tests", () => {
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/menuitem/edit/1'));
 
   });
+
+  
+
+  });
+  describe("cellToAxiosParamsDelete", () => {
+
+    test("It returns the correct params", () => {
+        // arrange
+        const cell = { row: { values: { id: 17 } } };
+
+        // act
+        const result = cellToAxiosParamsDelete(cell);
+
+        // assert
+        expect(result).toEqual({
+            url: "/api/menuitem",
+            method: "DELETE",
+            params: { id: 17 }
+        });
+    });
   
 });
