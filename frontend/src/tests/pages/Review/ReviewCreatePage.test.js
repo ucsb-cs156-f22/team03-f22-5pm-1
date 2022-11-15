@@ -55,7 +55,7 @@ describe("ReviewCreatePage tests", () => {
         const queryClient = new QueryClient();
         const review = {
             id: 17,
-            itemID: 24,
+            itemId: 24,
             reviewerEmail: "ethanlee@ucsb.edu",
             stars: "5",
             dateReviewed: "2022-02-02T00:00",
@@ -73,16 +73,16 @@ describe("ReviewCreatePage tests", () => {
         );
 
         await waitFor(() => {
-            expect(getByTestId("ReviewForm-itemID")).toBeInTheDocument();
+            expect(getByTestId("ReviewForm-itemId")).toBeInTheDocument();
         });
-        const itemIDField = getByTestId("ReviewForm-itemID");
+        const itemIdField = getByTestId("ReviewForm-itemId");
         const reviewerEmailField = getByTestId("ReviewForm-reviewerEmail");
         const starsField = getByTestId("ReviewForm-stars");
         const dateReviewedField = getByTestId("ReviewForm-dateReviewed");
         const commentsField = getByTestId("ReviewForm-comments");
         const submitButton = getByTestId("ReviewForm-submit");
 
-        fireEvent.change(itemIDField, { target: { value: '24' } });
+        fireEvent.change(itemIdField, { target: { value: '24' } });
         fireEvent.change(reviewerEmailField, { target: { value: 'ethanlee@ucsb.edu' } });
         fireEvent.change(starsField, { target: { value: '5' } });
         fireEvent.change(dateReviewedField, { target: { value: '2022-02-02T00:00' } });

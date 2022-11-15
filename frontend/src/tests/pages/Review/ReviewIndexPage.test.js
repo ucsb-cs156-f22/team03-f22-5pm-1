@@ -1,4 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
@@ -134,7 +134,7 @@ describe("ReviewIndexPage tests", () => {
         expect(queryByTestId(`${testId}-cell-row-0-col-id`)).not.toBeInTheDocument();
     });
 
-    /*test("test what happens when you click delete, admin", async () => {
+    test("test what happens when you click delete, admin", async () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
@@ -162,7 +162,7 @@ describe("ReviewIndexPage tests", () => {
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 1 was deleted") });
 
-    });*/
+    });
 
 });
 

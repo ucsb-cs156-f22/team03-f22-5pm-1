@@ -45,16 +45,16 @@ function ReviewForm({ initialReview, submitAction, buttonLabel="Create" }) {
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="itemID">itemID</Form.Label>
                 <Form.Control
-                    data-testid="ReviewForm-itemID"
-                    id="itemID"
+                    data-testid="ReviewForm-itemId"
+                    id="itemId"
                     type="text"
-                    isInvalid={Boolean(errors.itemID)}
-                    {...register("itemID", { 
-                        required: "itemID is required."
+                    isInvalid={Boolean(errors.itemId)}
+                    {...register("itemId", { 
+                        required: "itemId is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.itemID?.message}
+                    {errors.itemId?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 

@@ -29,7 +29,7 @@ export default function ReviewEditPage() {
       id: review.id,
     },
     data: {
-      itemId: review.itemID,
+      itemId: review.itemId,
       reviewerEmail: review.reviewerEmail,
       stars: review.stars,
       dateReviewed: review.dateReviewed,

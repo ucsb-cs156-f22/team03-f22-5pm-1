@@ -68,7 +68,7 @@ describe("ReviewForm tests", () => {
         fireEvent.click(submitButton);
 
         await waitFor(() => 
-        expect(getByText(/itemID is required./)).toBeInTheDocument());
+        expect(getByText(/itemId is required./)).toBeInTheDocument());
         expect(getByText(/reviewerEmail is required./)).toBeInTheDocument();
         expect(getByText(/stars is required./)).toBeInTheDocument();
         expect(getByText(/dateReviewed is required./)).toBeInTheDocument();
@@ -89,13 +89,13 @@ describe("ReviewForm tests", () => {
         await waitFor(() => expect(getByTestId("ReviewForm-dateReviewed")).toBeInTheDocument());
 
         const dateReviewedField = getByTestId("ReviewForm-dateReviewed");
-        const itemIDField = getByTestId("ReviewForm-itemID");
+        const itemIdField = getByTestId("ReviewForm-itemId");
         const reviewerEmailField = getByTestId("ReviewForm-reviewerEmail");
         const starsField =  getByTestId("ReviewForm-stars");
         const commentsField =  getByTestId("ReviewForm-comments");
         const submitButton = getByTestId("ReviewForm-submit");
 
-        fireEvent.change(itemIDField, { target: { value: '7' } });
+        fireEvent.change(itemIdField, { target: { value: '7' } });
         fireEvent.change(reviewerEmailField, { target: { value: 'test@testing.edu' } });
         fireEvent.change(starsField, { target: { value: '5' } });
         fireEvent.change(commentsField, { target: { value: 'a comment is here' } });
