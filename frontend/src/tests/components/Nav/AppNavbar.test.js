@@ -258,6 +258,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-menuitem-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-menuitem-create/)).toBeInTheDocument() );
 
     });
 
@@ -282,6 +283,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-organization-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-organization-create/)).toBeInTheDocument() );
 
     });
 
@@ -306,6 +308,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-recommendation-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-recommendation-create/)).toBeInTheDocument() );
 
     });
 
@@ -330,6 +333,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-review-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-review-create/)).toBeInTheDocument() );
 
     });
 
@@ -354,6 +358,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-helprequest-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-helprequest-create/)).toBeInTheDocument() );
 
     });
 
@@ -378,6 +383,7 @@ describe("AppNavbar tests", () => {
         expect(aElement).toBeInTheDocument();
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-article-list/)).toBeInTheDocument() );
+        await waitFor( () => expect(getByTestId(/appnavbar-article-create/)).toBeInTheDocument() );
 
     });
    
