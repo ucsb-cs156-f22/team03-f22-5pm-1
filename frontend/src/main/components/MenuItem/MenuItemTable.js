@@ -3,7 +3,7 @@ import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function MenuItemTable({ menuitems, currentUser }) {
+export default function MenuItemTable({ menuitem, currentUser }) {
 
     
     const navigate = useNavigate();
@@ -46,7 +46,7 @@ export default function MenuItemTable({ menuitems, currentUser }) {
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
-        data={menuitems}
+        data={menuitem}
         columns={columnsToDisplay}
         testid={"MenuItemTable"}
     />;

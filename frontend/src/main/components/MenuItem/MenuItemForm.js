@@ -35,7 +35,6 @@ function MenuItemForm({ initialMenuItem, submitAction, buttonLabel = "Create" })
                 </Form.Group>
             )}
 
-
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="diningCommonsCode">Dining Commons Code</Form.Label>
                 <Form.Control
@@ -49,7 +48,10 @@ function MenuItemForm({ initialMenuItem, submitAction, buttonLabel = "Create" })
                 <Form.Control.Feedback type="invalid">
                     {errors.diningCommonsCode?.message}
                 </Form.Control.Feedback>
-            </Form.Group>   
+            </Form.Group>  
+
+            
+            
 
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="name">Name</Form.Label>
