@@ -123,7 +123,7 @@ describe("OrganizationEditPage tests", () => {
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization/list" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
-            expect(axiosMock.history.put[0].params).toEqual({ orgCode: "test1" });
+            expect(axiosMock.history.put[0].params).toEqual({ code: "test1" });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
                 orgTranslationShort: "test123",
                 orgTranslation: "test123",

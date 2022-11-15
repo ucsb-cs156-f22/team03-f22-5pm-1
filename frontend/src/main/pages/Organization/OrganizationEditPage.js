@@ -25,7 +25,7 @@ export default function OrganizationEditPage() {
     url: "/api/ucsborganization",
     method: "PUT",
     params: {
-      orgCode: organization.orgCode,
+      code: organization.orgCode,
     },
     data: {
       orgTranslationShort: organization.orgTranslationShort,
