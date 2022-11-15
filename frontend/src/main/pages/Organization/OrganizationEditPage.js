@@ -4,13 +4,14 @@ import OrganizationForm from "main/components/Organization/OrganizationForm";
 import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
+
 export default function OrganizationEditPage() {
   let { code } = useParams();
 
   const { data: organization, _error, _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      [`/api/ucsborganization?orgCode=${code}`],
+      [`/api/ucsborganization?code=${code}`],
       {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
         method: "GET",
         url: `/api/ucsborganization`,
@@ -31,7 +32,7 @@ export default function OrganizationEditPage() {
       orgCode: organization.orgCode,
       orgTranslationShort: organization.orgTranslationShort,
       orgTranslation: organization.orgTranslation,
-      inactive: organization.inactive
+      inactive: organization.inactive,
     }
   });
 
@@ -56,8 +57,6 @@ export default function OrganizationEditPage() {
     return <Navigate to="/ucsborganization/list" />
   }
 
-  //console.log("CHECK THIS OUT ", organization);
-
   return (
     <BasicLayout>
       <div className="pt-2">
@@ -69,3 +68,4 @@ export default function OrganizationEditPage() {
     </BasicLayout>
   )
 }
+
