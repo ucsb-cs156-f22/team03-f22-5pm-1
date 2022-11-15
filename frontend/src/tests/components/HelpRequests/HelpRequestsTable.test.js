@@ -1,9 +1,11 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { HelpRequestsFixtures } from "fixtures/HelpRequestsFixtures";
-import HelpRequestsTable from "main/components/HelpRequests/HelpRequestsTable"
+import HelpRequestsTable from "main/components/HelpRequests/HelpRequestsTable";
+import {cellToAxiosParamsDelete } from "main/components/HelpRequests/HelpRequestsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+
 
 
 const mockedNavigate = jest.fn();
@@ -126,3 +128,21 @@ describe("HelpRequestsTable tests", () => {
 
 });
 
+describe("cellToAxiosParamsDelete", () => {
+
+    test("It returns the correct params", () => {
+        // arrange
+        const cell = { row: { values: { id: 17 } } };
+
+        // act
+        const result = cellToAxiosParamsDelete(cell);
+
+        // assert
+        expect(result).toEqual({
+            url: "/api/ucsbhelprequest",
+            method: "DELETE",
+            params: { id: 17 }
+        });
+    });
+
+});
