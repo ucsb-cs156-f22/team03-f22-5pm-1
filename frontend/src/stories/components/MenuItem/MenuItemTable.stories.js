@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItemTable from "main/components/MenuItem/MenuItemTable";
-import { menuItemFixtures } from 'fixtures/menuItemFixtures';
+import { MenuItemFixtures } from 'fixtures/MenuItemFixtures';
 
 export default {
     title: 'components/MenuItem/MenuItemTable',
@@ -20,10 +20,10 @@ Empty.args = {
     dates: []
 };
 
-export const ThreeMenuItem = Template.bind({});
+export const ThreeMenuItems = Template.bind({});
 
 ThreeMenuItem.args = {
-    menuitems: menuItemFixtures.threeMenuItems
+    menuitems: MenuItemFixtures.threeMenuItems
 };
 
 

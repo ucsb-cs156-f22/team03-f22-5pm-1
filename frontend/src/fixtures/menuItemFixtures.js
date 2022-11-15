@@ -1,4 +1,4 @@
-const menuItemFixtures = {
+const MenuItemFixtures = {
     oneMenuItem: {
         "id": 1,
         "diningCommonsCode": "ortega",
@@ -28,4 +28,4 @@ const menuItemFixtures = {
 };
 
 
-export { menuItemFixtures };
+export { MenuItemFixtures };
