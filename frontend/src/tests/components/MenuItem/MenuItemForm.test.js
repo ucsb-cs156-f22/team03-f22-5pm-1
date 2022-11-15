@@ -91,7 +91,7 @@ describe("MenuItemForm tests", () => {
 
         fireEvent.change(diningCommonsCodeField, { target: { value: 'ortega' } });
         fireEvent.change(NameField, { target: { value: 'Chicken Caesar Salad' } });
-        fireEvent.change(station, { target: { value: 'Entrees' } });
+        fireEvent.change(stationField, { target: { value: 'Entrees' } });
         fireEvent.click(submitButton);
 
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
