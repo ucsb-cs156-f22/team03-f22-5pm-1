@@ -9,7 +9,7 @@ export default function HelpRequestsTable({ helprequests, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/helpRequests/edit/${cell.row.values.id}`)
+        navigate(`/ucsbhelprequest/edit/${cell.row.values.id}`)
     }
 
 
