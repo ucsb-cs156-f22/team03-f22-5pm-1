@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItemForm from "main/components/MenuItem/MenuItemForm"
-import { MenuItemFixtures } from 'fixtures/menuItemFixtures';
+import { menuItemFixtures } from 'fixtures/menuItemFixtures';
 
 export default {
     title: 'components/MenuItem/MenuItemForm',
@@ -25,7 +25,7 @@ Default.args = {
 export const Show = Template.bind({});
 
 Show.args = {
-    menuitems: MenuItemFixtures.oneMenuItem,
+    menuitems: menuItemFixtures.oneMenuItem,
     submitText: "",
     submitAction: () => { }
 };
