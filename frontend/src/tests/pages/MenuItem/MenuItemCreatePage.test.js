@@ -64,7 +64,7 @@ describe("MenuItemCreatePage tests", () => {
           };
         
     
-        axiosMock.onPost("/api/menuitem/post").reply( 202, menuitem );
+        axiosMock.onPost("/api/ucsbdiningcommonsmenu/post").reply( 202, menuitem );
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>

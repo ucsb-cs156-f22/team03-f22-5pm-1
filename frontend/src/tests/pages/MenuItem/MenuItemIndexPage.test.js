@@ -50,7 +50,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, []);
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -66,7 +66,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, []);
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -82,7 +82,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders three MenuItem without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, menuItemFixtures.threeMenuItems);
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, menuItemFixtures.threeMenuItems);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -101,7 +101,7 @@ describe("MenuItemIndexPage tests", () => {
     test("renders three MenuItem without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, menuItemFixtures.threeMenuItems);
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, menuItemFixtures.threeMenuItems);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -121,7 +121,7 @@ describe("MenuItemIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").timeout();
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").timeout();
 
         const { queryByTestId, getByText } = render(
             <QueryClientProvider client={queryClient}>
@@ -147,8 +147,8 @@ describe("MenuItemIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, menuItemFixtures.threeMenuItems);
-        axiosMock.onDelete("/api/menuitem", {params: {id: 1}}).reply(200, "MenuItem with id 1 was deleted");
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, menuItemFixtures.threeMenuItems);
+        axiosMock.onDelete("/api/ucsbdiningcommonsmenu", {params: {id: 1}}).reply(200, "MenuItem with id 1 was deleted");
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -176,7 +176,7 @@ describe("MenuItemIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/menuitem/all").reply(200, menuItemFixtures.threeMenuItems);
+        axiosMock.onGet("/api/ucsbdiningcommonsmenu/all").reply(200, menuItemFixtures.threeMenuItems);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>

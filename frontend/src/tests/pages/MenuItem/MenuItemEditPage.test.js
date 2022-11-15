@@ -44,14 +44,14 @@ describe("MenuItemEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/menuitem", { params: { id: 17 } }).reply(200, {  
+            axiosMock.onGet("/api/ucsbdiningcommonsmenu", { params: { id: 17 } }).reply(200, {  
                 id: 17,
                 diningCommonsCode: "ortega",
                 name: "Chicken Caesar Salad",
                 station: "Entrees",
                
             });
-            axiosMock.onPut('/api/menuitem').reply(200, {
+            axiosMock.onPut('/api/ucsbdiningcommonsmenu').reply(200, {
                 id: "17",
                 diningCommonsCode: "ortega",
                 name: "Chicken Caesar Salad",

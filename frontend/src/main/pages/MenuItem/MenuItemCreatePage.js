@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export default function MenuItemCreatePage() {
 
     const objectToAxiosParams = (menuitem) => ({
-        url: "/api/menuitem/post",
+        url: "/api/ucsbdiningcommonsmenu/post",
         method: "POST",
         params: {
             diningCommonsCode: menuitem.diningCommonsCode,
@@ -24,7 +24,7 @@ export default function MenuItemCreatePage() {
         objectToAxiosParams,
         { onSuccess },
         // Stryker disable next-line all : hard to set up test for caching
-        ["/api/menuitem/all"]
+        ["/api/ucsbdiningcommonsmenu/all"]
     );
 
     const { isSuccess } = mutation

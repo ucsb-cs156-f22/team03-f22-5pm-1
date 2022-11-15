@@ -136,7 +136,7 @@ describe("MenuItemTable tests", () => {
 
         // assert
         expect(result).toEqual({
-            url: "/api/menuitem",
+            url: "/api/ucsbdiningcommonsmenu",
             method: "DELETE",
             params: { id: 17 }
         });
