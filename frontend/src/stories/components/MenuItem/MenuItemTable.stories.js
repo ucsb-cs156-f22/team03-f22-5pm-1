@@ -22,7 +22,7 @@ Empty.args = {
 
 export const ThreeMenuItems = Template.bind({});
 
-ThreeMenuItem.args = {
+ThreeMenuItems.args = {
     menuitems: MenuItemFixtures.threeMenuItems
 };
 
