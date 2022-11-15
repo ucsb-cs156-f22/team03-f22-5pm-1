@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItemTable from "main/components/MenuItem/MenuItemTable";
-import { MenuItemFixtures } from 'fixtures/MenuItemFixtures';
+import { MenuItemFixtures } from 'fixtures/menuItemFixtures';
 
 export default {
     title: 'components/MenuItem/MenuItemTable',

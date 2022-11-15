@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MenuItemForm from "main/components/MenuItem/MenuItemForm"
-import { MenuItemFixtures } from 'fixtures/MenuItemFixtures';
+import { MenuItemFixtures } from 'fixtures/menuItemFixtures';
 
 export default {
     title: 'components/MenuItem/MenuItemForm',

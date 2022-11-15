@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent } from "@testing-library/react";
 import MenuItemForm from "main/components/MenuItem/MenuItemForm";
-import { MenuItemFixtures } from "fixtures/MenuItemFixtures";
+import { menuItemFixtures } from "fixtures/menuItemFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const mockedNavigate = jest.fn();
@@ -28,7 +28,7 @@ describe("MenuItemForm tests", () => {
 
         const { getByText, getByTestId } = render(
             <Router  >
-                <MenuItemForm initialMenuItem={MenuItemFixtures.oneMenuItem} />
+                <MenuItemForm initialMenuItem={menuItemFixtures.oneMenuItem} />
             </Router>
         );
         await waitFor(() => expect(getByTestId(/MenuItemForm-id/)).toBeInTheDocument());

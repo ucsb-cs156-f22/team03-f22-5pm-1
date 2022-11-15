@@ -1,5 +1,5 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import { MenuItemFixtures } from "fixtures/MenuItemFixtures";
+import { menuItemFixtures } from "fixtures/menuItemFixtures";
 import MenuItemTable from "main/components/MenuItem/MenuItemTable"
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -62,7 +62,7 @@ describe("MenuItemTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemTable menuitem={MenuItemFixtures.threeMenuItems} currentUser={currentUser} />
+          <MenuItemTable menuitem={menuItemFixtures.threeMenuItems} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -104,7 +104,7 @@ describe("MenuItemTable tests", () => {
     const { getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <MenuItemTable menuitem={MenuItemFixtures.threeMenuItems} currentUser={currentUser} />
+          <MenuItemTable menuitem={menuItemFixtures.threeMenuItems} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
