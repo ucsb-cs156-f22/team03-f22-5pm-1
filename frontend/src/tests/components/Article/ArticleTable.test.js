@@ -1,9 +1,10 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { articleFixtures } from "fixtures/articleFixtures";
-import ArticleTable from "main/components/Article/ArticleTable"
+import ArticleTable from "main/components/Article/ArticleTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { cellToAxiosParamsDelete } from "main/components/Article/ArticleTable";
 
 
 const mockedNavigate = jest.fn();
@@ -89,6 +90,10 @@ describe("ArticleTable tests", () => {
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
+
   });
 
   test("Edit button navigates to the edit page for admin user", async () => {
@@ -117,3 +122,20 @@ describe("ArticleTable tests", () => {
 
 });
 
+describe("cellToAxiosParamsDelete", () => {
+
+  test("It returns the correct params", () => {
+      // arrange
+      const cell = { row: { values: { title: "Article11" } } };
+
+      // act
+      const result = cellToAxiosParamsDelete(cell);
+
+      // assert
+      expect(result).toEqual({
+          url: "/api/article",
+          method: "DELETE",
+          params: { title: "Article11" }
+      });
+    });
+  });

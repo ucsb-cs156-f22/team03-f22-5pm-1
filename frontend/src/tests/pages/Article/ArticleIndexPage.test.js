@@ -172,6 +172,36 @@ describe("ArticleIndexPage tests", () => {
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/article/edit/article11'));
 
     });
+
+    test("test what happens when you click delete, admin", async () => {
+        setupAdminUser();
+    
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/article/all").reply(200, articleFixtures.threeArticle);
+        axiosMock.onDelete("/api/article").reply(200, "Article with title Article11 was deleted");
+    
+    
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticleIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+    
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toBeInTheDocument(); });
+    
+        expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("1"); 
+    
+    
+        const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+        expect(deleteButton).toBeInTheDocument();
+       
+        fireEvent.click(deleteButton);
+    
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Article with title Article11 was deleted") });
+    
+    });
 });
 
 
