@@ -6,7 +6,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/organization",
+        url: "/api/ucsborganization",
         method: "DELETE",
         params: {
             code: cell.row.values.orgCode
@@ -19,14 +19,14 @@ export default function OrganizationTable({ organization, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/organization/edit/${cell.row.values.orgCode}`)
+        navigate(`/ucsborganization/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/organization/all"]
+        ["/api/ucsborganization/all"]
     );
     // Stryker enable all 
 

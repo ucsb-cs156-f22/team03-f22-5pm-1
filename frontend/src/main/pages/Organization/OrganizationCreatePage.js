@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export default function OrganizationCreatePage() {
   const objectToAxiosParams = (organization) => ({
-    url: "/api/organization/post",
+    url: "/api/ucsborganization/post",
     method: "POST",
     params: {
       orgCode: organization.orgCode,
@@ -25,7 +25,7 @@ export default function OrganizationCreatePage() {
     objectToAxiosParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    ["/api/organization/all"]
+    ["/api/ucsborganization/all"]
   );
 
   const { isSuccess } = mutation
@@ -35,7 +35,7 @@ export default function OrganizationCreatePage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/organization/list" />
+    return <Navigate to="/ucsborganization/list" />
   }
 
 

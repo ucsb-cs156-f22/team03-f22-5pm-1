@@ -13,9 +13,9 @@ export default function OrganizationIndexPage() {
   const { data: organization, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      ["/api/organization/all"],
+      ["/api/ucsborganization/all"],
             // Stryker disable next-line StringLiteral,ObjectLiteral : since "GET" is default, "" is an equivalent mutation
-            { method: "GET", url: "/api/organization/all" },
+            { method: "GET", url: "/api/ucsborganization/all" },
       []
     );
 

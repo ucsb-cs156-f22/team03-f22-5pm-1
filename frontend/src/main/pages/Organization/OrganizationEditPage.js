@@ -10,10 +10,10 @@ export default function OrganizationEditPage() {
   const { data: organization, _error, _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      [`/api/organization?orgCode=${code}`],
+      [`/api/ucsborganization?orgCode=${code}`],
       {  // Stryker disable next-line all : GET is the default, so changing this to "" doesn't introduce a bug
         method: "GET",
-        url: `/api/organization`,
+        url: `/api/ucsborganization`,
         params: {
           code
         }
@@ -22,7 +22,7 @@ export default function OrganizationEditPage() {
 
 
   const objectToAxiosPutParams = (organization) => ({
-    url: "/api/organization",
+    url: "/api/ucsborganization",
     method: "PUT",
     params: {
       orgCode: organization.orgCode,
@@ -42,7 +42,7 @@ export default function OrganizationEditPage() {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/organization?orgCode=${code}`]
+    [`/api/ucsborganization?orgCode=${code}`]
   );
 
   const { isSuccess } = mutation
@@ -52,7 +52,7 @@ export default function OrganizationEditPage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/organization/list" />
+    return <Navigate to="/ucsborganization/list" />
   }
 
   //console.log("CHECK THIS OUT ", organization);

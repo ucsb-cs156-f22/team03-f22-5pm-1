@@ -63,7 +63,7 @@ describe("OrganizationCreatePage tests", () => {
           };
         
     
-        axiosMock.onPost("/api/organization/post").reply( 202, organization );
+        axiosMock.onPost("/api/ucsborganization/post").reply( 202, organization );
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -103,7 +103,7 @@ describe("OrganizationCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New Organization Created - orgCode: test1");
-        expect(mockNavigate).toBeCalledWith({ "to": "/organization/list" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization/list" });
     });
 
 

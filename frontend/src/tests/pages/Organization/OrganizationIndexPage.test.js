@@ -50,7 +50,7 @@ describe("OrganizationIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, []);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -66,7 +66,7 @@ describe("OrganizationIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, []);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -82,7 +82,7 @@ describe("OrganizationIndexPage tests", () => {
     test("renders three orgs without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, organizationFixtures.threeOrganizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationFixtures.threeOrganizations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -101,7 +101,7 @@ describe("OrganizationIndexPage tests", () => {
     test("renders three orgs without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, organizationFixtures.threeOrganizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationFixtures.threeOrganizations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -121,7 +121,7 @@ describe("OrganizationIndexPage tests", () => {
         setupUserOnly();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").timeout();
+        axiosMock.onGet("/api/ucsborganization/all").timeout();
 
         const { queryByTestId, getByText } = render(
             <QueryClientProvider client={queryClient}>
@@ -147,8 +147,8 @@ describe("OrganizationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, organizationFixtures.threeOrganizations);
-        axiosMock.onDelete("/api/organization", {params: {code: "test1"}}).reply(200, "Organization with orgCode test1 was deleted");
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationFixtures.threeOrganizations);
+        axiosMock.onDelete("/api/ucsborganization", {params: {code: "test1"}}).reply(200, "Organization with orgCode test1 was deleted");
 
 
         const { getByTestId } = render(
@@ -177,7 +177,7 @@ describe("OrganizationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/organization/all").reply(200, organizationFixtures.threeOrganizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, organizationFixtures.threeOrganizations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -197,7 +197,7 @@ describe("OrganizationIndexPage tests", () => {
        
         fireEvent.click(editButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organization/edit/test1'));
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsborganization/edit/test1'));
 
     });
 

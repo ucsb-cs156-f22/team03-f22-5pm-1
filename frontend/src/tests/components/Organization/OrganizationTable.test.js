@@ -118,7 +118,7 @@ describe("OrganizationTable tests", () => {
     
      fireEvent.click(editButton);
 
-     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organization/edit/test1'));
+     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsborganization/edit/test1'));
 
    }); 
 
@@ -144,7 +144,7 @@ describe("OrganizationTable tests", () => {
 
    // await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/organization/edit/test1'));
 
-   // I know this is probably a sham test, but it is need for 100% coverage test. DiningCommonsTable doesn't even have this yet it works??
+   // I know this is probably a sham test, but it is needed for 100% coverage test. DiningCommonsTable doesn't even have this yet it works??
 
   }); 
 
