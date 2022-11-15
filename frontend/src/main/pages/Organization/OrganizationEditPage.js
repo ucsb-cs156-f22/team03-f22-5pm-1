@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { useBackend, useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function DiningCommonsEditPage() {
+export default function OrganizationEditPage() {
   let { code } = useParams();
 
   const { data: organization, _error, _status } =
