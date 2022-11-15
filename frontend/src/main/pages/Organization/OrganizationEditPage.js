@@ -42,7 +42,7 @@ export default function OrganizationEditPage() {
     objectToAxiosPutParams,
     { onSuccess },
     // Stryker disable next-line all : hard to set up test for caching
-    [`/api/ucsborganization?orgCode=${code}`]
+    [`/api/ucsborganization?code=${code}`]
   );
 
   const { isSuccess } = mutation
