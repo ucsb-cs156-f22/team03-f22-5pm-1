@@ -43,13 +43,13 @@ describe("OrganizationEditPage tests", () => {
             axiosMock.resetHistory();
             axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
             axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
-            axiosMock.onGet("/api/organization", { params: { code: "test1" } }).reply(200, {  
+            axiosMock.onGet("/api/ucsborganization", { params: { code: "test1" } }).reply(200, {  
                 orgCode: "test1",
                 orgTranslationShort: "test1",
                 orgTranslation: "test1",
                 inactive: false
             });
-            axiosMock.onPut('/api/organization').reply(200, {
+            axiosMock.onPut('/api/ucsborganization').reply(200, {
                 orgCode: "test1",
                 orgTranslationShort: "test1",
                 orgTranslation: "test1",
@@ -120,7 +120,7 @@ describe("OrganizationEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled);
             expect(mockToast).toBeCalledWith("Organization Updated - orgCode: test1");
-            expect(mockNavigate).toBeCalledWith({ "to": "/organization/list" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization/list" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ orgCode: "test1" });
