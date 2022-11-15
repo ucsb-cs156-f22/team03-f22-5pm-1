@@ -26,11 +26,16 @@ export default function MenuItemTable({ menuitem, currentUser }) {
         navigate(`/menuitem/edit/${cell.row.values.id}`)
     }
 
+    // Stryker disable all : hard to test for query caching
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
         ["/api/menuitem/all"]
     );
+    // Stryker enable all 
+
+    // Stryker disable next-line all : TODO try to make a good test for this
+
 
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
     
