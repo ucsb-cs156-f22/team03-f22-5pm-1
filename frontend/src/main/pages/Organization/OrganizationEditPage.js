@@ -28,6 +28,7 @@ export default function OrganizationEditPage() {
       code: organization.orgCode,
     },
     data: {
+      orgCode: organization.orgCode,
       orgTranslationShort: organization.orgTranslationShort,
       orgTranslation: organization.orgTranslation,
       inactive: organization.inactive

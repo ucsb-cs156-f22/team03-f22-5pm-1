@@ -125,6 +125,7 @@ describe("OrganizationEditPage tests", () => {
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ code: "test1" });
             expect(axiosMock.history.put[0].data).toBe(JSON.stringify({
+                orgCode: "test1",
                 orgTranslationShort: "test123",
                 orgTranslation: "test123",
                 inactive: false
