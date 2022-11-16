@@ -25,7 +25,7 @@ Default.args = {
 export const Show = Template.bind({});
 
 Show.args = {
-    menuitems: menuItemFixtures.oneMenuItem,
+    menuitem: menuItemFixtures.oneMenuItem,
     submitText: "",
     submitAction: () => { }
 };
