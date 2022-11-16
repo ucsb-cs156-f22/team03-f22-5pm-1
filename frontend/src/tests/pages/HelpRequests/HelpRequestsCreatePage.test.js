@@ -107,7 +107,7 @@ describe("HelpRequestsCreatePage tests", () => {
         });
 
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 17 teamId: Dog");
-        expect(mockNavigate).toBeCalledWith({ "to": "/ucsbhelprequest/list" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/helprequest/list" });
     });
 
 

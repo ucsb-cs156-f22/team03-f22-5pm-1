@@ -55,7 +55,7 @@ export default function HelpRequestsEditPage() {
   }
 
   if (isSuccess) {
-    return <Navigate to="/ucsbhelprequest/list" />
+    return <Navigate to="/helprequest/list" />
   }
 
   return (
