@@ -146,7 +146,7 @@ describe("HelpRequestsIndexPage tests", () => {
        
         fireEvent.click(editButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbhelprequest/edit/1'));
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/helprequest/edit/1'));
 
     });
 

@@ -174,7 +174,7 @@ describe("tests where backend is working normally", () => {
 
         await waitFor(() => expect(mockToast).toBeCalled);
         expect(mockToast).toBeCalledWith("HelpRequests Updated - id: 17 teamId: cat");
-        expect(mockNavigate).toBeCalledWith({ "to": "/ucsbhelprequest/list" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/helprequest/list" });
 
         expect(axiosMock.history.put.length).toBe(1); // times called
         expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
