@@ -30,7 +30,7 @@ export default function MenuItemTable({ menuitem, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/menuitem/all"]
+        ["/api/ucsbdiningcommonsmenu/all"]
     );
     // Stryker enable all 
 
